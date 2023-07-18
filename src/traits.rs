@@ -14,7 +14,7 @@ pub trait StateMachine {
 }
 
 // Simple helper to do some hashing.
-fn hash<T: Hash>(t: &T) -> u64 {
+pub fn hash<T: Hash>(t: &T) -> u64 {
     let mut hasher = DefaultHasher::new();
     t.hash(&mut hasher);
     hasher.finish()
@@ -23,6 +23,7 @@ fn hash<T: Hash>(t: &T) -> u64 {
 // Test for hash function 
 #[test]
 fn test_hash_enum_vec() {
+    #[derive(Hash)]
     enum KeyTest {
         One,
         Two,
